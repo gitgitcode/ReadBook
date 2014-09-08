@@ -1,0 +1,192 @@
+/*
+*数组的值得有序集合。每个值叫元素，每个元素在数组中有一个位置
+*以数字表示成为索引。
+*JavaScript 数组是无类型。元素随意，索引最大4294967294（2^32-2)
+*它是动态的，有length属性。
+*用数字索引访问数组元素比常规的对象属性要快。
+*数组继承Array.prototype属性，7.8-7.9
+*数组的操作方法对“类数组对象”同样有效7.11
+*字符串的行为与字符串数组类似7.12
+*/
+
+
+
+
+
+
+//7.1 创建数组
+
+//在方括号中将数组元素用逗号隔开
+
+var b =[1,[1,{x:1,y:3}],,]
+
+/*[1, 
+  Array[2]=>
+  0: 1,
+  1: Object
+  x: 1
+  y: 3
+  , undefined × 1]
+*/  
+
+//如果省略数组直接量的某个值，省略元素将被赋予undefined值
+//数组直接量的语法允许有可选的结尾的逗号，故[，，]只有两个元素
+
+//用构造函数Array创建
+var a = new Array();
+// 空数组 []
+
+//指定长度
+var a = new Array(10)
+//预选分配一个数组空间，数组中无值，无索引
+
+var a = new Array(232,32,3,'teset');
+//数组字面量
+/**
+*var a =new Array(23,23,32,'tt',,,) 这样是错的
+*/
+
+
+
+
+
+//7.2数组元素的读和写
+var arr =['world']
+undefined
+arr
+["world"]
+var value = a[0]
+undefined
+value
+23
+var value = arr[0]
+undefined
+value
+"world"
+a[1] = 2.3
+2.3
+i =2
+2
+arr[1] = 2.3
+2.3
+arr[i] = 3
+3
+a[i+1] ='hello'
+"hello"
+a[a[i]]=a[0]
+23
+arr[i+1] ='hello'
+"hello"
+arr[arr[i]]=a[0]
+23
+arr[arr[i]]=arr[0]
+"world"
+arr
+["world", 2.3, 3, "world"]
+
+//正常的数组设置访问
+
+//数组是对象的特殊形式。
+//所有的索引都是属性名，只有0-2^32-2之间的整数属性名才是索引。
+//所有数组都是对象，可以创建任意名字的属性。
+//但如果使用的属性是数组的索引，数组的特殊行为是更新length属性
+//负数非整数的索引数组，数值转为字符串
+
+arr[-9]=true
+true
+arr
+["world", 2.3, 3, "world"]
+arr[-9]
+true
+arr.length
+4
+Object.getOwnPropertyDescriptor(arr,'-9')
+Object {value: true, writable: true, enumerable: true, configurable: true}
+
+//当访问不存在的属性时返回undefined
+//数组可以定义元素的getter和setter方法。
+
+
+// 数组对象部分 访问方式 通过 “." 来访问
+// 数组没字符索引，arr['str']被作为属性使用
+
+arr = new Array();
+[]
+arr[0]='this is arr'
+"this is arr"
+arr[10]='ten'
+"ten"
+arr
+["this is arr", undefined × 9, "ten"]
+arr['c']='int'
+"int"
+arr
+["this is arr", undefined × 9, "ten"]
+arr.c
+"int"
+arr.le
+undefined
+arr.length
+11
+arr
+["this is arr", undefined × 9, "ten"]
+arr.length
+11
+
+//7.3稀疏数组
+//稀疏数组就是包含从0开始的不连续索引的数组
+//当数组是稀疏数组数组时，length属性值大于元素的个数。此时，一切也是就数组长度保证大于它
+//每个元素的索引值。
+//为数组赋值时，索引i大于或等于数组长度时，length属性值将设为i+1
+//设置length属性为小于当前长度的非负整数n时，当前数组中那些索引值大于或等于n的元素将从中删除。
+//还可以将length的值设置大于当前索引长度，超出的部分创建为空的区域。
+var m=[23,3,3,4,4,]
+m.length
+5
+m.length =3
+3
+m
+[23, 3, 3]
+m.length =31
+31
+m
+[23, 3, 3, undefined × 28]
+
+//7.5 数组元素的添加和删除
+
+为索引赋值
+a = [];//空数组
+a[0]='zero';
+a[1]='one';
+
+//使用push()想数组尾部添加一个或多个元素
+a.push('zero','one')
+2
+a
+["zero", "one"]
+//等同于a[a.length]赋值方式
+
+//向数组首部插入一个元素
+a.unshift('start')
+3
+a
+["start", "zero", "one"]
+a[0]
+"start"
+
+//可以像删除对象一样使用delete 删除数组元素
+delete a[1]
+true
+a
+["start", undefined × 1, "one"]
+1 in a //数组索引不在数组中定义
+false //
+a.length //数组长度不变
+3
+//通过pop()方法来删除尾部元素返回删除值并减少length属性
+//splice() 方法通过插入方法，删除或天幻数组元素 7.8节
+
+//7.6数组遍历
+
+
+

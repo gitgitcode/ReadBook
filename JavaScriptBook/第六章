@@ -1,0 +1,211 @@
+Object.getOwnPropertyDescriptor() //获取某个对象特定属性的描述符
+
+Object.getOwnPropertyDescriptor({x:1},'x') 
+//Object {value: 1, writable: true, enumerable: true, configurable: true} //不存在返回undefiend
+
+Object.defineProperty() //新建属性或修改属性
+
+var m ={} 
+Object.defineProperty(m ,'x',{value:1,
+writable:true,enumerable:false,configurable:true});
+//->Object {x: 1}
+m
+//->Object {x: 1}
+m.x
+//->1
+Object.keys(m) //属性存在但是不可枚举
+//->[]
+//修改属性为只读
+Object.defineProperty(m,'x',{writable:false})
+//Object {x: 1}
+
+m.x=3
+//3
+m.x
+//1
+
+Object.defineProperty(m,'x',{value:23}) //属性可配置，可以进行修改
+//Object {x: 23}
+m.x
+//23
+
+//修改为存取器属性---好像没什么意义，下面会有实例
+Object.defineProperty(m,'x',{get: function() {return 0;}})
+//Object {x: 0}
+m.x
+//0
+m.x=23;
+//23
+m.x
+//0
+
+
+同时修改或创建多个属性使用Object.defineProperties()
+var p = Object.defineProperties({},{
+x:{value:1,writable:true,enumerable:true,configurable:true},
+y:{value:1,writable:true,enumerable:true,configurable:true},
+r:{
+get:function(){return Math.sqrt(this.x*this.x+this.y*this.y) },
+enumerable:true,configrable:true
+}
+})
+
+
+//6-3复制属性的特征 
+/**
+*不太理解这个是一个什么，属性。
+*添加这extend()方法后能够将该对象的所有属性全部复制过去？而且无法单独独调用，属于默认内容
+* stackoverflow的答案也只是说这是个能够全部继承并能够成功调用
+* http://stackoverflow.com/questions/7033811/copying-attributes-in-javascript 
+*
+*
+*/
+
+/**
+*给Object.defineProperty添加一个不可枚举的extend()方法
+*/
+Object.defineProperty( Object.prototype, 'extend', {
+    writable: true,
+    enumerable: false,          //  将其定义为不可枚举
+    configurable: true,
+    value: function(o) {
+        var names = Object.getOwnPropertyNames(o);                      //  得到所有的自有属性，包括不可枚举属性
+        
+        for( var i = 0; i < names; i++ ) {                              //  遍历它们
+            if(names[i] in this) continue;                              //  如果属性已经存在, 则跳过
+            
+            var desc = Object.getOwnPropertyDescriptor(o, names[i]);    //  获得 o 中的属性的描述符
+            
+            Object.defineProperty(this, names[i], desc);                //  用它给 this 创建一个属性
+        }
+    }
+} );
+
+
+//6.8.1原型属性 
+/*
+*/
+var p = {x:1}
+//undefined
+var o = Object.create(p);
+p.isPrototypeOf(o); //检测p是否是o的原型 true
+Object.prototype.isPrototypeOf(o) //p继承自object.prototype =>true
+
+//6.8.2 类属性
+//对象的类属性 class attribute 是一个字符串，用以表示对象的类型信息。
+//classof()函数可以返回传递给他的任意对象的类
+//调用toString（） 
+function classof(o){
+if(o ==null) return "Undefined";
+if(o == undefined) return "Undefined";
+return Object.prototype.toString.call(o).slice(8,-1);
+}
+
+//6.8.3可扩展性
+//对象的可扩展性用以表示是否可以为对象添加新属性，所有的内置对象和自定义对象都是显式可扩展的
+//！*** Object.esExtensible() 该方法被未定义
+//！*** [TypeError: Object function Object() { [native code] } has no method 'esExtensible']，
+//！*** 使用Object.isExtensible() 发音一样…… 
+//You can set a object to be not extensible, but you cannot set a object to be extensible.
+Object.isExtensible() //查询对象是否可扩展
+// check if a object is extensible (that is, whether properties can be added)
+
+var uu = {}; // user-defined object
+console.log(Object.isExtensible(uu)); // true
+
+var aa = [3,4,5]; // Array
+console.log(Object.isExtensible(aa)); // true
+
+var dd = new Date(); // date object
+console.log(Object.isExtensible(dd)); // true
+
+Object.preventExtensions()//将对象转换为不可扩展 
+//一旦被转为不可扩展，就无法转为可扩展 
+//preventExtensions之影响对象本身，如果给一个不可扩展的对象原型添加属性
+//，这个不可扩展的对象同样会继承这些新属性
+// set the extensible attribute of a object to false
+
+var u8 = {};
+
+Object.preventExtensions(u8);
+
+u8.pp = 3;                      // add a property
+
+console.log(u8.pp);             // prints 「undefined」. add failed
+
+console.log(Object.isExtensible(u8)); // false
+
+Ojnect.seal() //同preventExtensions ，可以将对象所有自有属性设为不可配置
+//对于已经封闭sealed对象，已有属性可设置，不能添加新的或删除使用isSealed检测
+Object.preventExtensions(o)
+console.log(Object.isExtensible(o)) //=>false
+Object.seal(o)
+Object {x: 1}
+Object.isSealed(o) //true;
+
+Object.freeze()//冻结frozen对象，不可扩展，不可配置，所有属性只读
+
+//嵌套调用
+var m = Object.seal(
+   Object.create(Object.freeze({x:1}),
+{y:{value:2,writable:true}})
+);
+//undefined
+m
+//Object {y: 2, x: 1}
+m.x
+//1
+m.x=23 
+//23 
+m.x //x 为freeze 不可设置
+//1
+m.y=3
+//3
+m.y
+//3
+m.p=23 //m sealed 
+//23
+m
+//Object {y: 3, x: 1}
+
+
+//6.9 对象序列化
+//对象序列化 serialization 指对象的状态转换为字符串或还原为字符串
+JSON.stringify() 
+JSON.parse()
+t = {x:1,y:{z:[false,null,""]}}
+s = JSON.stringify(t)
+//"{"x":1,"y":{"z":[false,null,""]}}"
+s
+//"{"x":1,"y":{"z":[false,null,""]}}"
+pp = JSON.parse(s)
+//Object {x: 1, y: Object}
+
+//!*** 函数，regExp error，undefined不能序列化，不能序列化的属性将被省略
+
+//6.10对象方法
+
+//6.10.1 toString()
+//toString（）没有参数，返回一个表示调用这个放的对象的字符串。
+pp.toString()
+//"[object Object]"
+//9.6.3 介绍如何定义重写toString()方法
+
+//6.10.2 toLocaleString()
+//返回表示这个对象的本地化字符串？？？？
+//Date和Number类对toLocaleString做的定制，可以做本地化转换
+//Array 每个数组元素都会调用toLocaleString不调用toString
+
+//6.10.3 toJSon方法
+//JSON.stringify()方法会调用toJSON方法 Date.toJSON()……
+
+//6.10.3 valueOf()
+//JavaScript需要将对象转换为某种原始值而废字符串的时候才会调用它，尤其是数字
+//？？？？？？？？？？？？？
+
+/*
+*就是说这些方法，你可能不一定直接使用，但是当操作时，JavaScript会自动的调用它！？
+*平时，并不一定能够使用的到…… 或许9.6章回有答案
+*/
+
+

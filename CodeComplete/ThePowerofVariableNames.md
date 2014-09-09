@@ -19,7 +19,7 @@
     财务软件：        calcVal，sum
     例子中第一个均比第二个更具计算机语言特征。
     
-###    Optimum name length 最奢当的名字长度
+###    Optimum name length 最适当的名字长度
     
     变量名最佳长度似乎应该介于x 和maximumNamberOfPointsInModernOlympics之间，
     太短无法传达足够的信息，太长有难写同时会是程序的视觉结构变得模糊。

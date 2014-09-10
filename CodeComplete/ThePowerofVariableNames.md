@@ -80,5 +80,5 @@
      }
 ```     
      谨慎的使用循环下标变量名可以避免产生下标串话（index cross-talk）的常见问题：i，j用混。
-     score[teamIndex][eventIndex]比 score[i][j] 确实让人更容易懂。
+*     score[teamIndex][eventIndex] 比 score[i][j] 确实让人更容易懂。
 

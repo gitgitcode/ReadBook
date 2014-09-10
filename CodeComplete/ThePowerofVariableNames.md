@@ -52,4 +52,33 @@
     
     begin/end     fist/last     locked/unlocked          min/max      old/new
     opend/closed     visible/invisible     source/target     source/destination     up/down
+    
+##   Naming specific types of data 为特定类型的数据命名
+     
+###     Naming loop indexes  为循环变量命名
+     
+     循环是一种常见的计算机编程编程特征。i，j，k 约定俗成。  如果在循环外部使用，那么就使用要比i，j，k  更有意义的名字。
+     比如读取文件记录的记录数量recordCount 
+```     
+     java 描述性较好的循环变量名
+     recordCount=0；
+     while（moreScores（））{
+     	score[recordCount] = GetNextScore（）；
+     	recordCount++；
+     }
+     // line useing recordCount
+```
+     因为代码容易扩充修改并容易忘记i这类变量的具体意义，故有经验的程序员不使用i这样的名字。
+     
+     导致循环变长的一个原因是出现循的环嵌套使用。
+```
+     java 嵌套循环中的好的循环变量
+     for( teamIndex = 0;teamIndex < teamCount;teamIndex++){
+     	for(eventIndex = 0;eventIndex < eventCount[teamIndex];eventIndex++){
+     		score[teamIndex][eventIndex]=0;
+     	}
+     }
+```     
+     谨慎的使用循环下标变量名可以避免产生下标串话（index cross-talk）的常见问题：i，j用混。
+     score[teamIndex][eventIndex]比 score[i][j] 确实让人更容易懂。
 

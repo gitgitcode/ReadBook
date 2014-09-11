@@ -82,3 +82,85 @@
      谨慎的使用循环下标变量名可以避免产生下标串话（index cross-talk）的常见问题：i，j用混。
 *     score[teamIndex][eventIndex] 比 score[i][j] 确实让人更容易懂。
 
+
+###     Naming status variables 为状态变量名命名
+     
+     状态变量用于描述你程序的状态。
+     
+     为状态变量取一个比flag更好的名字 做好是把标记（flag） 看作状态变量，
+     标记的名字不应该含有flag。因为你根本不知道这是标记的什么。
+     
+     应该使用枚举类型，具体常量，或者用作具名常量的全局变量来对其赋值，而且其值应该与上面这些做比较。
+```
+     C++
+     if( flag )....
+     if( statusFlag & 0x0F)...
+     if( printFlag == 16)...
+     if( computeflag == 0 )...
+     
+     flag = 0x1;
+     statusFlag = 0x80;
+     computeflag = 0;
+```
+     
+```
+     C++
+     if( dataReady )....
+     if( characterType & PRINTABLE_CHAR )...
+     if( reportTpey == ReportType_Annual )...
+     if( recalcNeeded == false )...
+     
+     dataRaedy = true;
+     characterType = ReportType_Annual;
+     recalcNeede = false;
+```     
+*     reportTpey == ReportType_Annual       比  statusFlag = 0x80 更有意义
+*     if( reportTpey == ReportType_Annual ) 比  printFlag == 16 更清晰
+
+```
+     C++ 声明状态变量
+     //values for CharacterType
+     
+     const int LETTER = 0x01;
+     const int DIGIT  = 0x02;
+     const int PUNCTUATION = 0x04;
+     const int LINE_DRAW = 0x08;
+     const int PRINTABLE_CHAR = ( LETTER | DIGIT | PUNCTUATION | LINE_DRAW );
+     const int CONTROL_CHARACTER = 0x08;
+     
+     //value for ReportType
+     
+     enum ReportType {
+        ReportType_Daily,
+        ReportTyep_Monthly,
+        ReportTyep_Quarterly,
+        ReportTyep_Annual,
+        ReportTyep_All
+     };
+```
+
+     如果你发现自己需要猜测某段的含义时候，就该考虑为变量重新命名。
+     
+###     Naming temporary variables 为临时变量命名
+     
+     临时变量用于存储计算中的中间结果，作为临时占位符，以及存储内务管理（housekeeping）值。
+     通常，临时变量是一个信号，表明程序员还没有完全把问题弄清楚。
+     而且，被赋予了一种“临时”状态，程序员更加随意的对待这些变量，更容易随意赋值，出错的可能性大大增加。
+     
+     警惕“临时”变量 临时性的保存一些值常常是很有必要的。
+```     
+     C++
+     temp = sqrt(b^2 -4*a*c)
+     root[0] = ( -b + temp )/( 2*a )
+     root[1] = ( -b - temp )/( 2*a )
+```     
+     temp 没有反应该变量的功能
+```     
+     C++
+     //compute root of a quadratic equation
+     //this assumes that ( b^2-4*a*c ) is postive
+     descriminant = sqrt(b^2 -4*a*c)
+     root[0] = ( -b + descriminant )/( 2*a )
+     root[1] = ( -b - descriminant )/( 2*a )
+```     
+     本质上上面两代码完全相同，但是第二段使用了具有描述性的变量命名(discriminant,判别式)

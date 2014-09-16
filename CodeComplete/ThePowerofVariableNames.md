@@ -164,3 +164,32 @@
      root[1] = ( -b - descriminant )/( 2*a )
 ```     
      本质上上面两代码完全相同，但是第二段使用了具有描述性的变量命名(discriminant,判别式)
+
+### 	Naming Enumerated Types 为枚举类型命名
+	在使用枚举类型的时候，可以通过使用组前缀，如Color_，Planet_或者Month_来明确表示该类型的成员都属于一个组。
+```
+Visual Basic
+Public Enum Color
+	Color_Red
+	Color_Green
+	Color_Blue
+End Enum
+
+Public Enum Planet
+	Planet_Earth
+	Planet_Mars
+	Planet_Venus
+End Enum
+
+Public Enum Month
+	Month_January
+	Month_Februay
+	...
+	Month_December
+End Enum
+```
+对于枚举类型的两种看法：
+用户定义类型，因此枚举名字的格式应该与其他用户定义的类型如类相同。
+枚举是一种类型，同时也是常量，因此名字的格式与常量相同。
+
+

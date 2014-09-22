@@ -1,169 +1,99 @@
-netsh wlan start hostednetwork 
-C:\Windows\system32>netsh wlan set hostednetwork mode=allow ssid=Test key=lich
-dewifi
-The hosted network mode has been set to allow.
-The SSID of the hosted network has been successfully changed.
-The user key passphrase of the hosted network has been successfully changed.
+#ç½‘ç«™
+---
 
+###å¤§åž‹ç½‘ç«™
+    æ—¥å‡ è¶…è¿‡pv100ä¸‡
+*   é«˜å¹¶å‘ å¤§æµé‡
+    
+        apache 200pv å¹³å‡æ¯ç§’  -å—é™ä¸šåŠ¡é€»è¾‘
+	    google 40509 pv35äº¿
+*   é«˜å¯ç”¨  ï¼ˆ7*24 å¤‡ä»½ï¼‰
 
-´óÐÍÍøÕ¾
+*   æµ·é‡æ•°æ® ï¼ˆMySQLå­˜å‚¨ å­˜å‚¨æ•°æ®å‡ åƒä¸‡ ï¼‰
 
+*   éœ€æ±‚è¿­ä»£ å‘å¸ƒé¢‘ç¹ 
 
-ÈÕ¾ù ³¬¹ýpv100Íò ´óÐÍÍøÕ¾
+##æž„æž¶è¦ç´ 
+    
+* é«˜æ€§èƒ½ 
+* é«˜å¯ç”¨
+* æ‰©å±•æ€§
 
-
-###¸ß²¢·¢ ´óÁ÷Á¿
-	apache 200pv Æ½¾ùÃ¿Ãë  -ÊÜÏÞÒµÎñÂß¼­
-	google 40509 pv35ÒÚ
-###¸ß¿ÉÓÃ -±¸·Ý 7*24
-
-###º£Á¿Êý¾Ý £¨MySQL´æ´¢ ´æ´¢Êý¾Ý¼¸Ç§Íò £©
-
-###ÐèÇóµü´ú£¬·¢²¼Æµ·± 
-
-#¹¹¼ÜÒªËØ
-	* ¸ßÐÔÄÜ 
-		¸ß»º´æ ²¢ÐÐ¼ÆËã ÏµÍ³ÓÅ»¯
-	* ¸ß¿ÉÓÃ
-		¸ºÔØ¾ùºâ Ë«»ú»¥±¸ ×Ô¶¯»Ö¸´
-	* À©Õ¹ÐÔ
-		¿ª·¢¿ò¼Ü ¶à²ãÉè¼Æ ÒµÎñ·Ö¸î
-
-´ò¿ªÒ»¸öÍøÕ¾           Ãë
-Êý¾Ý¿â ²éÑ¯ÓÐË÷Òý Ê±¼ä 100ºÁÃëÒÔÏÂ
-
-
-
-*ÐÔÄÜ¸ºÔØ²âÊÔ
-	tps 
-	
-*²¢·¢·ÃÎÊÊ±¼ä
-	ÏµÍ³×î¼ÑÔËÐÐµã ×î´ó¸ºÔØµã ±ÀÀ£µã	        
-
-#²âÊÔ¹¤¾ß
- ab  - n ×Ü¹²ÇëÇó -c Ã¿Ãë·¢ËÍ ab -n -c http://127.0.0.1/ 
-
- jmeter
- loadrunner
- 
- requests per second Ã¿Ãë ÄÜ³ÐÊÜµÄÇëÇóÁ¿
-
-##webÇ°¶ËÓÅ»¯
-	¼õÉÙhttpÇëÇó
-	Ê¹ÓÃä¯ÀÀÆ÷»º´æ »º´æÊ±¼ä
-	ÄÚÈÝÑ¹Ëõ 
-		  gzip,deflate,sdch ²É¼¯Ê±½âÑ¹Ëõ
-	¼õÉÙcookicµÄ´«Êä 
-		 ²»Í¬µÄÓòÃû ie6Ö»ÄÜ´ò¿ªÁ½¸öÁ´½Ó
-		 ¼Ó¿ì·ÃÎÊËÙ¶È ä¯ÀÀÆ÷²¢·¢·ÃÎÊ
-	css·ÅÔÚ×îÉÏÃæ
-	javascript ·ÅÔÚ×îÏÂÃæ
-yslow
-
-
-#¸ß¿ÉÓÃ
-
-¿ÉÓÃÐÔ 99.99% Ò»Äê 
-2¸ö9»ù±¾¿ÉÓÃ  Äê¶ÈÐ¡ÓÚ88Ð¡Ê±
-3¸ö9 9Ð¡Ê±
-4¸ö9 ×Ô¶¯»Ö¸´¹¦ÄÜµÄ¸ß¿ÉÓÃ
-5¸ö9 Äê¶ÈÐ¡ÓÚ5·ÖÖÓ
-
-¼Ü¹¹ÑÝ»¯
-
-	ÎïÀí·ÖÀë ²»Í¬ÒµÎñÉìËõ
-	Ôö¼ÓÒ³Ãæ»º´æ 
-	Ò³ÃæÆ¬¶Î»º´æ
-	Êý¾Ý»º´æ memache 
-	Ôö¼Ówebserver
-	·Ö¿â  
-	·Ö±í DALºÍ·Ö²¼Ê½»º´æ
-	¸ü¶àµÄwebserver ·Ö²¼Ê½ÎÄ¼þÏµÍ³
-	¶ÁÐ´·ÖÀë ´æ´¢
-	´óÐÍ·Ö²¼Ê½Ó¦ÓÃºÍ¼¯Èº  ¶ÓÁÐ
+* é«˜å¯ç”¨
+        å¯ç”¨æ€§ 99.99% ä¸€å¹´ 
+        2ä¸ª9åŸºæœ¬å¯ç”¨  å¹´åº¦å°äºŽ88å°æ—¶
+        3ä¸ª9 9å°æ—¶
+        4ä¸ª9 è‡ªåŠ¨æ¢å¤åŠŸèƒ½çš„é«˜å¯ç”¨
+        5ä¸ª9 å¹´åº¦å°äºŽ5åˆ†é’Ÿ
+         
+        1.è´Ÿè½½å‡è¡¡ lvs ngnix haproxy keepalived 
+        2.åŒæœºäº’å¤‡ mysql mongodb ReplicaSet
+        3.è‡ªåŠ¨æ¢å¤ 
         
- ## ´óÐÍÍøÕ¾ºËÐÄË¼Ïë
-
-*  ¡®·Ö¡¯¶øÖÎÖ®£¬·ÖÊÇ¸ù±¾      
-	
-	Ë®Æ½  apache·þÎñ £¬ ±íÌ«´ó user1users3users2 µ¥±í£»²»Í¬ÒµÎñ£»
-	´¹Ö±  DAL Êý¾Ý userÓÃ»§ÖÐ£¬blogµ¥¶À £»Ó¦ÓÃ²ã£¬·þÎñ²ã£¬Êý¾Ý²ã
-	·Ö²¼Ê½ Ó¦ÓÃ·þÎñ×ÊÔ´Êý¾Ý¼ÆËã
-	¶¯¾²·ÖÀë
-	¼¯Èº
-
-*   »º´æ  
-	Êý¾Ý ä¯ÀÀÆ÷»º´æ cdn
-
-*   Òì²½ÏûÏ¢¶ÓÁÐ
-	 Òì²½ÏûÏ¢¶ÓÁÐ£¨producer-¡µmq->consumer ÐÔÄÜ£¬Ç¿×³£¬ËÙ¶È£¬²¢·¢£©
-	
-*   ×Ô¶¯»¯
-	×Ô¶¯»¯´úÂë ×Ô¶¯»¯²âÊÔ ×Ô¶¯»¯²¿Êð ×Ô¶¯»¯¼à¿Ø ×Ô¶¯»¯±¨¾¯ °²È«¼ì²â Ê§Ð§×ªÒÆºÍ»Ö¸´
-
-*   ¾«ÒæÇó¾«£¬ÓÅ»¯Ã¿Ò»¸öÏ¸½Ú
-	linux ÓÅ»¯  ÒÀ¾ÝÒµÎñÑ¡¹º ÓÅ»¯tcp ÎÄ¼þÊý´ò¿ªÏÞÖÆ
-	apache ÓÅ»¯ ÔËÐÐÄ£Ê½
-	mysql  ÓÅ»¯
-	php    ÓÅ»¯
-
-	chkconfig iptables off ¹Ø±Õ·À»ðÇ½ 
-	/etc/sysconfig/selinux
-	/ssh/ssh_confing 
-		gssapi nono yes yes 
-	cwÌæ»»
-	etc/hosts etc/sysconfig/network  # /etc/init.d/network restart
-	2 µ¥ÓÃ»§ 3ÃüÁîÐÐ 5 Í¼ÐÎ
-	chkconfig --2  iptables off
-  	/etc/profile histsize ÀúÊ·´óÐ¡  
-  	ulimit ¶ÁÎÄ¼þ´óÐ¡ rc.loac  ulimit 
-	
-	free -mÕ× buffers/cahche free
-	µÚ¶þ²¿·Ö(-/+ buffers/cache):
-(-buffers/cache) usedÄÚ´æÊý£º286M (Ö¸µÄµÚÒ»²¿·ÖMemÐÐÖÐµÄused ¨C buffers ¨C cached)
-(+buffers/cache) freeÄÚ´æÊý: 715M (Ö¸µÄµÚÒ»²¿·ÖMemÐÐÖÐµÄfree + buffers + cached)
-	
-	¸ºÔØ uptime average 1¸ºÔØ ÏµÍ³·±Ã¦ ¼¸ºË Ò»°ãÊÇ¼¸ )  5¸ºÔØ  15·ÖÖÓ¸ºÔØ
         
-	top 1 cpu
-	
-	 4²ãip×ª·¢lvs   hap 4-7
-    7²ãhttp ×ª·¢ ngnix
+*   é«˜æ€§èƒ½
+        é«˜ç¼“å­˜ å¹¶è¡Œè®¡ç®— ç³»ç»Ÿä¼˜åŒ–
+        
+        tps  
+        ç³»ç»Ÿæœ€ä½³è¿è¡Œç‚¹ æœ€å¤§è´Ÿè½½ç‚¹ å´©æºƒç‚¹
+        ab  - n æ€»å…±è¯·æ±‚ -c æ¯ç§’å‘é€ ab -n -c http://127.0.0.1/ requests per second æ¯ç§’ èƒ½æ‰¿å—çš„è¯·æ±‚é‡
+        jmeter
+        loadrunner
+        
+*  å¯æ‰©å±•
+        å¼€å‘æ¡†æž¶ å¤šå±‚è®¾è®¡ ä¸šåŠ¡åˆ†å‰²       
+	    
 
-	ip1=192293
-	vip1=192. ÐéÄâµÄip ²»´æÔÚµÄ ·þÎñ¶Ë
-	
-	¿Í»§¶Ë  vim ls vip Í¬·þÎñÆ÷vip vipÐéÄâºó±»Õ¼ÓÃ
+##   æž¶æž„æ¼”åŒ–
 
-	keealived ±¸·Ý  ¼à¿Ø×Ô¼º Ôö¼Óvip  ½âÎöµ½vip
-	
-	tail -f ÈÕÖ¾
-
+        ç‰©ç†åˆ†ç¦» ä¸åŒä¸šåŠ¡ä¼¸ç¼© ->
        
-	
-
-
-
-	
+        å¢žåŠ é¡µé¢ç¼“å­˜ ->
+    	é¡µé¢ç‰‡æ®µç¼“å­˜ ->
+    	æ•°æ®ç¼“å­˜ memache  ->
+    	å¢žåŠ webserver ->
+    	åˆ†åº“  ->
+    	åˆ†è¡¨ DALå’Œåˆ†å¸ƒå¼ç¼“å­˜ ->
+    	æ›´å¤šçš„webserver åˆ†å¸ƒå¼æ–‡ä»¶ç³»ç»Ÿ ->
+    	è¯»å†™åˆ†ç¦» å­˜å‚¨ ->
+    	å¤§åž‹åˆ†å¸ƒå¼åº”ç”¨å’Œé›†ç¾¤  é˜Ÿåˆ—
         
+        å¤šåŸŸååŸŸåä¸šåŠ¡åˆ†ç¦»
+
+
+## å¤§åž‹ç½‘ç«™æ ¸å¿ƒæ€æƒ³
+
+*  â€˜åˆ†â€™è€Œæ²»ä¹‹ï¼Œåˆ†æ˜¯æ ¹æœ¬      
+    
+	æ°´å¹³  apacheæœåŠ¡ ï¼Œ è¡¨å¤ªå¤§ user1users3users2 å•è¡¨ï¼›ä¸åŒä¸šåŠ¡ï¼›
+	åž‚ç›´  DAL æ•°æ® userç”¨æˆ·ä¸­ï¼Œblogå•ç‹¬ ï¼›åº”ç”¨å±‚ï¼ŒæœåŠ¡å±‚ï¼Œæ•°æ®å±‚
+	åˆ†å¸ƒå¼ åº”ç”¨æœåŠ¡èµ„æºæ•°æ®è®¡ç®—
+	åŠ¨é™åˆ†ç¦»
+	é›†ç¾¤
+
+*   ç¼“å­˜  
+	æ•°æ® æµè§ˆå™¨ç¼“å­˜ cdn
+
+*   å¼‚æ­¥æ¶ˆæ¯é˜Ÿåˆ—
+	 å¼‚æ­¥æ¶ˆæ¯é˜Ÿåˆ—ï¼ˆproducer-ã€‰mq->consumer æ€§èƒ½ï¼Œå¼ºå£®ï¼Œé€Ÿåº¦ï¼Œå¹¶å‘ï¼‰
 	
+*   è‡ªåŠ¨åŒ–
+	è‡ªåŠ¨åŒ–ä»£ç  è‡ªåŠ¨åŒ–æµ‹è¯• è‡ªåŠ¨åŒ–éƒ¨ç½² è‡ªåŠ¨åŒ–ç›‘æŽ§ è‡ªåŠ¨åŒ–æŠ¥è­¦ å®‰å…¨æ£€æµ‹ å¤±æ•ˆè½¬ç§»å’Œæ¢å¤
 
+*   ç²¾ç›Šæ±‚ç²¾ï¼Œä¼˜åŒ–æ¯ä¸€ä¸ªç»†èŠ‚
+	linux ä¼˜åŒ–  ä¾æ®ä¸šåŠ¡é€‰è´­ ä¼˜åŒ–tcp æ–‡ä»¶æ•°æ‰“å¼€é™åˆ¶
+	apache ä¼˜åŒ– è¿è¡Œæ¨¡å¼
+	mysql  ä¼˜åŒ–
+	php    ä¼˜åŒ–
 
-
-
-
-
-
-	
-
-
-		
-
-
-
-
-
-
-
-
-
+###   webå‰ç«¯ä¼˜åŒ–
+            å‡å°‘httpè¯·æ±‚
+            ä½¿ç”¨æµè§ˆå™¨ç¼“å­˜ ç¼“å­˜æ—¶é—´
+        	å†…å®¹åŽ‹ç¼© 
+		    gzip,deflate,sdch
+            é‡‡é›†æ—¶è§£åŽ‹ç¼©
+	        å‡å°‘cookicçš„ä¼ è¾“ 
+		    ä¸åŒçš„åŸŸå ie6åªèƒ½æ‰“å¼€ä¸¤ä¸ªé“¾æŽ¥
+		    åŠ å¿«è®¿é—®é€Ÿåº¦ æµè§ˆå™¨å¹¶å‘è®¿é—®
+	        cssæ”¾åœ¨æœ€ä¸Šé¢
+	        javascript æ”¾åœ¨æœ€ä¸‹é¢ 

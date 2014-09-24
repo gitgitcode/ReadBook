@@ -193,3 +193,20 @@ End Enum
 枚举是一种类型，同时也是常量，因此名字的格式与常量相同。
 
 
+### Naming constants  为常量命名
+
+	在具名常量时，应该根据常量所表示的含义，而不是常量所具体的数值为该抽象事物命名。
+FIVE 是个很糟糕的常量名，CYLES_NEEDED 是个不错的名字。CYLES_NEEDED 可以等于0.5或0.6而FIVE
+等于6 ：（ 。同样的，BAKERS_DOZEN是个糟糕的变量名，而DUNUTS_MAX很不错。
+
+## The Power of Naming Conventions 命名规则的力量
+
+	有效的标准是你所能掌握的最强到的工具之一。
+
+### why have conventions 为什么要有规则
+
+	命名规则可以带来的好处。
+*	要求你更多地按规矩行事。
+	通过一项全局决策而不是做许多局部决策，你可以集中精力关注代码的重要特征。
+
+

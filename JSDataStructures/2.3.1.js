@@ -7,7 +7,7 @@
 //indexOf() use nodejs
 
 
-var names = ["Divid","Cynthia","Raymond","Clayton","Jennifer"];
+var names = ["abcbc","Divid","Cynthia","Raymond","Clayton","Divid","Jennifer"];
 //putstr("Enter a name to seacr for:");
 
 //var name = readlin();
@@ -28,3 +28,11 @@ rl.question("What do you think of Node.js? ", function(answer) {
     }
     rl.close();
 });
+
+// lastIndexOf()
+var name = "Divid";
+var firstpos = names.indexOf(name)
+var lastPos = names.lastIndexOf(name)
+
+console.log("first found" + name + "at position " + firstpos)
+console.log("Last found "+ name +'at postion ' + lastPos)

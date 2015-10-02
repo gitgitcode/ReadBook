@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>simpe d3 dev env</title>
+    <link rel="stylesheet" href="style.css"/>
+    <script type="text/javascript" src="d3/d3.js"></script>
+
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+   function SimpleWidget(spec){
+       var instance = {};  // --- A 私有变量
+       var headline,description; // --- B 私有变量
+
+       instance.render = function(){
+           var div = d3.select('body').append("div");
+           div.append("h3").text(headline); // --- C 私有变量
+           div.attr("class","box")
+                   .attr("style","color:"+spec.color) // --- D
+                   .append("p")
+                        .text(description); // --- E
+           return instance; // --- F
+       };
+
+       instance.headline = function(h){
+           if(!arguments.length) return headline;
+           headline = h;
+           return instance;
+       };
+
+       instance.description = function(d){
+           if(!arguments.length) return description; // 内奸隐藏参数
+           description = d;
+           return instance;
+       };
+       return instance;
+   }
+
+    var widget = SimpleWidget({color:"#6495ed"})
+            .headline("Simple Widget")
+            .description("This is a simple widget demonstrating functional javascript.");
+
+    widget.render();
+
+
+</script>
+</html>

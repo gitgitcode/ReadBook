@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css"/>
+    <script type="text/javascript" src="d3/d3.js"></script>
+    <title>select all div</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+
+</body>
+<script type="text/javascript">
+    d3.selectAll("div")
+            .attr("class","red box")
+            .each(function (d,i){
+                console.log(d)
+                d3.select(this).append("h1").text(i);
+            })
+/*
+
+each ==>
+function(callback) {
+ return d3_selection_each(this, function(node, i, j) {
+ callback.call(node, node.__data__, i, j);
+ });
+ }
+ */
+</script>
+</html>
